@@ -1077,7 +1077,7 @@ int unicast_reply_send(struct unicast_reply *reply, int socket, int code, const 
 		if (temp_size != -1) {
 			size += temp_size;
 		} else {
-			if (errno != EINTR) {
+			if (errno != EINTR && errno != EAGAIN || errno != EWOULDBLOCK) {
 				return -1;
 			}
 		}
