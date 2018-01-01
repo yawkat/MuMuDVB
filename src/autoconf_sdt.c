@@ -105,7 +105,7 @@ int autoconf_read_sdt(auto_p_t *auto_p, mumu_chan_p_t *chan_p)
 
 	header=(sdt_t *)buf; //we map the packet over the header structure
 
-	if(header->version_number==auto_p->sdt_version)
+	if(auto_p->sdt_version != -1)
 	{
 		//check if we saw this section
 		if(auto_p->sdt_sections_seen[header->section_number])
