@@ -38,7 +38,7 @@
 #include "config.h"
 
 //The maximum size for a TS packet
-#define MAX_TS_SIZE 4096
+#define MAX_TS_SIZE 8192
 
 //0x1ffb=8187 It's the pid for the information tables in ATSC
 #define PSIP_PID 8187
@@ -786,7 +786,7 @@ typedef enum packet_status {
 //A TS is 188bytes long minus 4 bytes for the header 184 bytes left
 //A section is at least 8 bytes long + one descriptor 3 bytes + CRC32 4 bytes
 //it's a total of 15bytes / section
-#define MAX_FULL_PACKETS 15
+#define MAX_FULL_PACKETS 128
 //A minimum is MAX_TS_SIZE + TS_PACKET_SIZE
 //Just to add flexibility on how to write the code I take some margin
 #define FULL_BUFFER_SIZE 2*MAX_TS_SIZE
