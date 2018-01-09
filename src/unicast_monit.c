@@ -142,10 +142,10 @@ int unicast_send_channel_list_js (int number_of_channels, mumudvb_channel_t *cha
 		else
 			unicast_reply_write(reply, "{}\n");
 		unicast_reply_write(reply, "\n\t\t],\n\t\"clients\": [\n");
-		unicast_send_client_list_js(channels[curr_channel].clients, reply);
-		if(channels[curr_channel].num_clients)
+		if(channels[curr_channel].clients) {
+			unicast_send_client_list_js(channels[curr_channel].clients, reply);
 			reply->used_body -= 2; // dirty hack to erase the last comma
-		else
+		} else
 			unicast_reply_write(reply, "\t\t{}\n");
 		unicast_reply_write(reply, "\t\t]\n\t},\n");
 	}
